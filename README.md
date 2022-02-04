@@ -18,8 +18,11 @@ i.e.
 
 ====
 params = ( ('limit', 'nbelment'),
+
 ('offset', 'index'),
+
 ('service_name', 'World Watch')
 )
+
 response = requests.get('https://api-tdc.cert.orangecyberdefense.com/v1/cybalerts/', headers=headers, params=params)
 
