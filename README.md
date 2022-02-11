@@ -48,8 +48,8 @@ https://api-tdc.cert.orangecyberdefense.com/v1/cybalerts/
 
 For example, in Python 3, you can run the following code to get all the alerts.
 
-'''
-nbelement = 20
+
+'''nbelement = 20
 index=1
 file = open("file_result.json", "w")
 file.write("")
@@ -85,9 +85,8 @@ if (maxnumber != 0):
             print(request['results'][i])
             i=i+1
             
-        i=0
- '''
-
+        i=0'''
+ 
 
 There are many parameters available to filter your search more precisely, to use them, just add them when you run your query, for example to filter by 'offer_name' or 'service_name' specifically to list only alerts/advice related to a specific service. So for World Watch, you could use for example: 'service_name' = 'World Watch'.
 
