@@ -107,25 +107,25 @@ response = requests.get('https://api-tdc.cert.orangecyberdefense.com/v1/cybalert
 
 The list of the different parameters allowing to filter your searches are the following
 
-Name | Located in | Description | Required | Schema
+Name | Located in | Description | Required | Schema |
 --- | --- | --- | --- |--- |
-timestamp_detected | query |  Look for alerts detected at given day. | ISO 8601 format. |  No |  date | 
+timestamp_detected | query |  Look for alerts detected at given day.  ISO 8601 format. |  No |  date | 
 --- | --- | --- | --- |--- |
-timestamp_detected_since | query |  Look for alerts detected since given date. | ISO 8601 format. |  No |  date | time | 
+timestamp_detected_since | query |  Look for alerts detected since given date.  ISO 8601 format. |  No |  datetime | 
 --- | --- | --- | --- |--- |
-timestamp_detected_until | query |  Look for alerts detected until given date. | ISO 8601 format. |  No |  date | time | 
+timestamp_detected_until | query |  Look for alerts detected until given date.  ISO 8601 format. |  No |  datetime | 
 --- | --- | --- | --- |--- |
-timestamp_updated | query |  Look for alerts updated at given day. | ISO 8601 format. |  No |  date | 
+timestamp_updated | query |  Look for alerts updated at given day.  ISO 8601 format. |  No |  date | 
 --- | --- | --- | --- |--- |
-timestamp_updated_ since | query |  Look for alerts updated since given date. | ISO 8601 format. |  No |  date | time | 
+timestamp_updated_ since | query |  Look for alerts updated since given date. ISO 8601 format. |  No |  datetime | 
 --- | --- | --- | --- |--- |
-timestamp_updated_until | query |  Look for alerts updated until given date. | ISO 8601 format. |  No |  date | time | 
+timestamp_updated_until | query |  Look for alerts updated until given date. ISO 8601 format. |  No |  datetime | 
 --- | --- | --- | --- |--- |
-timestamp_closed | query |  Look for alerts closed at given day. | ISO 8601 format. |  No |  date | 
+timestamp_closed | query |  Look for alerts closed at given day. ISO 8601 format. |  No |  date | 
 --- | --- | --- | --- |--- |
-timestamp_closed_since | query |  Look for alerts closed since given date. | ISO 8601 format. |  No |  date | time | 
+timestamp_closed_since | query |  Look for alerts closed since given date. ISO 8601 format. |  No |  datetime | 
 --- | --- | --- | --- |--- |
-timestamp_closed_until | query | severity | query |  Alert severity. Takes values from 0 to 5 |  No | integer |
+timestamp_closed_until | query | Look for alerts closed until given date. ISO 8601 format. |  No | datetime |
 --- | --- | --- | --- |--- |
 severity | query |  Alert severity. Takes values from 0 to 5 |  No | integer |
 --- | --- | --- | --- |--- |
