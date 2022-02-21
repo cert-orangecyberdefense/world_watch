@@ -105,7 +105,65 @@ response = requests.get('https://api-tdc.cert.orangecyberdefense.com/v1/cybalert
 ```
 
 
-The list of the different parameters allowing to filter your searches are available from the setting_file
+The list of the different parameters allowing to filter your searches are the following
+
+Name | Located in | Description | Required | Schema
+--- | --- | --- | --- |--- |
+timestamp_detected | query |  Look for alerts detected at given day. | ISO 8601 format. |  No |  date | 
+--- | --- | --- | --- |--- |
+timestamp_detected_since | query |  Look for alerts detected since given date. | ISO 8601 format. |  No |  date | time | 
+--- | --- | --- | --- |--- |
+timestamp_detected_until | query |  Look for alerts detected until given date. | ISO 8601 format. |  No |  date | time | 
+--- | --- | --- | --- |--- |
+timestamp_updated | query |  Look for alerts updated at given day. | ISO 8601 format. |  No |  date | 
+--- | --- | --- | --- |--- |
+timestamp_updated_ since | query |  Look for alerts updated since given date. | ISO 8601 format. |  No |  date | time | 
+--- | --- | --- | --- |--- |
+timestamp_updated_until | query |  Look for alerts updated until given date. | ISO 8601 format. |  No |  date | time | 
+--- | --- | --- | --- |--- |
+timestamp_closed | query |  Look for alerts closed at given day. | ISO 8601 format. |  No |  date | 
+--- | --- | --- | --- |--- |
+timestamp_closed_since | query |  Look for alerts closed since given date. | ISO 8601 format. |  No |  date | time | 
+--- | --- | --- | --- |--- |
+timestamp_closed_until | query | severity | query |  Alert severity. Takes values from 0 to 5 |  No | integer |
+--- | --- | --- | --- |--- |
+severity | query |  Alert severity. Takes values from 0 to 5 |  No | integer |
+--- | --- | --- | --- |--- |
+title | query |  Terms to search in alert title |  No | string |
+--- | --- | --- | --- |--- |
+source_name | query |  Terms to search in source name |  No | string |
+--- | --- | --- | --- |--- |
+content | query |  Search for terms in block contents |  No | string |
+--- | --- | --- | --- |--- |
+opened | query |  Whether the alert is ongoing or not |  No |  boolean |
+--- | --- | --- | --- |--- |
+risk_id | query |  Risk ID |  No | integer |
+--- | --- | --- | --- |--- |
+risk | query |  risk label |  No | string |
+--- | --- | --- | --- |--- |
+id | query |  Alert ID |  No | integer |
+--- | --- | --- | --- |--- |
+incident | query |  Alert incident ID |  No | integer |
+--- | --- | --- | --- |--- |
+service_id | query |  Search a service by ID |  No | integer |
+--- | --- | --- | --- |--- |
+service_name | query |  Search a service by name |  No | string |
+--- | --- | --- | --- |--- |
+offer_id | query |  Search a offer by ID |  No | integer |
+--- | --- | --- | --- |--- |
+offer_name | query |  Search a offer by name |  No | string |
+--- | --- | --- | --- |--- |
+tag | query |  Search by tag |  No | string |
+--- | --- | --- | --- |--- |
+url | query |  Search by url |  No | string |
+--- | --- | --- | --- |--- |
+limit | query |  Set the numberof entries to return. Maximumis 100. |  No | integer |
+--- | --- | --- | --- |--- |
+offset | query |  Set the entry index from which to return results |  No | integer |
+--- | --- | --- | --- |--- |
+order_by | query |  sort results by a criteria. Allowed values are timestamp_detected, timestamp_updated and severity. Prepend the value by a - to have a reverse ordering |  No | string |
+--- | --- | --- | --- |--- |
+
 
 
 
