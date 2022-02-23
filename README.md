@@ -2,8 +2,8 @@ World Watch API documentation provided to each client that was granted access to
 
 Authentication endpoint:
 
-Located at: https://api-tdc.cert.orangecyberdefense.com/v1/auth/
-Requires a API key pair of credentials generated from your profile on TDC portal personal account here: https://portal.cert.orangecyberdefense.com/admin/api.
+Located at: https://api-tdc.cert.orangecyberdefense.com/v1/auth/  
+Requires a API key pair of credentials generated from your profile on TDC portal personal account here: https://portal.cert.orangecyberdefense.com/admin/api.  
 If you subscribed to the API access but don't see this page, you need to contact your Orange Cyberdefense representative.
 
 
@@ -23,17 +23,12 @@ Then, to authenticate against the TDC API, you need to send a REST POST request 
 For example, in python 3, you can execute the following code to get your token.,
 
      
-```
-
-#!python 
-
+```python3
 from urllib import request
 import requests
 import json
 
-
-
-#get token <br/>
+#get token
 query = request.Request('https://api-tdc.cert.orangecyberdefense.com/v1/auth/', method='POST',
 data='{"username": "     your USERNAME      ", '
 '"password": "     YOUR API KEY          "}'.encode('utf-8'),
@@ -41,16 +36,13 @@ headers={'Content-Type': 'application/json'},)
 with request.urlopen(query) as response:content = json.loads(response.read().decode('utf-8'))
 token = content['token']
 ```
-
-
-
 Restrict output per service:
 
 If you subscribed to our Cybercrime services on top of World Watch service, all advisories (i.e. JSON documents) are available from the main API endpoint:
 https://api-tdc.cert.orangecyberdefense.com/v1/cybalerts/
 
 For example, in Python 3, you can run the following code to get all the alerts.
-```
+```python3
 nbelement = 20
 index=1
 file = open("file_result.json", "w")
@@ -96,7 +88,7 @@ There are many parameters available to filter your search more precisely, to use
 
 i.e.
 
-```
+```python3
 params = ( 
 ('service_name', 'World Watch'),
 )
@@ -163,8 +155,3 @@ offset | query |  Set the entry index from which to return results |  No | integ
 --- | --- | --- | --- |--- |
 order_by | query |  sort results by a criteria. Allowed values are timestamp_detected, timestamp_updated and severity. Prepend the value by a - to have a reverse ordering |  No | string |
 --- | --- | --- | --- |--- |
-
-
-
-
-
