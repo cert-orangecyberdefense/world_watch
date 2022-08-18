@@ -153,5 +153,5 @@ limit | query |  Set the numberof entries to return. Maximumis 100. |  No | inte
 --- | --- | --- | --- |--- |
 offset | query |  Set the entry index from which to return results |  No | integer |
 --- | --- | --- | --- |--- |
-order_by | query |  sort results by a criteria. Allowed values are timestamp_detected, timestamp_updated and severity. Prepend the value by a - to have a reverse ordering |  No | string |
+ordering | query |  sort results by a criteria. Allowed values are timestamp_detected, timestamp_updated and severity. Prepend the value by a - to have a reverse ordering |  No | string |
 --- | --- | --- | --- |--- |
