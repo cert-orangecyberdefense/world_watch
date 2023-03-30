@@ -30,7 +30,7 @@ import json
 
 #get token
 query = request.Request('https://api-tdc.cert.orangecyberdefense.com/v1/auth/', method='POST',
-data='{"username": "     your USERNAME      ", '
+data='{"username": "     Your API login      ", '
 '"password": "     YOUR API KEY          "}'.encode('utf-8'),
 headers={'Content-Type': 'application/json'},)
 with request.urlopen(query) as response:content = json.loads(response.read().decode('utf-8'))
