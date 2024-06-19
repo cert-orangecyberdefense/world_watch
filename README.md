@@ -16,7 +16,7 @@ If you need an account on this API, please contact us at worldwatch-request.ocd@
 <li>
 <p>APIKeyAuthentication</p></li></ul>
 <p>Different endpoints use different keys, and one user can have multiple keys at the same time.</p>
-<p>You can know which endpoint uses which key by checking the <a href="https://worldwatch.atlassian.net/wiki/spaces/~557058f39668e7b5934f2fb9bbf5a2aa299248/pages/316538881/API-WW#Endpoints">endpoints</a> section.</p>
+<p>You can know which endpoint uses which key by checking the endpoints section below.</p>
 <h2>User Role</h2>
 <p>There are four roles that a user can have:</p>
 <ul>
@@ -29,7 +29,7 @@ If you need an account on this API, please contact us at worldwatch-request.ocd@
 <li>
 <p>Analyst</p></li></ul>
 <p>Different endpoints require different roles, and each user can have at most one role.</p>
-<p>You can know which endpoint needs which user role by checking the <a href="https://worldwatch.atlassian.net/wiki/spaces/~557058f39668e7b5934f2fb9bbf5a2aa299248/pages/316538881/API-WW#Endpoints">endpoints</a> section.</p>
+<p>You can know which endpoint needs which user role by checking the endpoints section.</p>
 <h1>User Management</h1>
 <p>In order to add a new user, you need:</p>
 <ul>
