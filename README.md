@@ -619,7 +619,11 @@ If you need an account on this API, please contact us at worldwatch-request.ocd@
 <p>max_length=500           </p></td></tr></tbody></table>
 <h1>API</h1>
 <h2>Request fields validation</h2>
-<p>Errors related to parsing requests fields, are returned in format: </p><ac:structured-macro ac:name="code" ac:schema-version="1" ac:macro-id="a600913a-418d-4413-8541-de256f4e294a"><ac:plain-text-body><![CDATA[{
+
+Errors related to parsing requests fields, are returned in format:
+
+```json
+{
   "detail": [
     {
       "loc": [],
@@ -627,12 +631,17 @@ If you need an account on this API, please contact us at worldwatch-request.ocd@
       "type": "value_error.email"
     }
   ]
-}]]></ac:plain-text-body></ac:structured-macro>
-<p><code>loc</code> - shows the field when the error occured</p>
-<p><code>msg</code> - is the error message</p>
-<p><code>type</code> - is type of error</p>
-<p />
-<p>For example:</p><ac:structured-macro ac:name="code" ac:schema-version="1" ac:macro-id="f5baef0f-21ff-49a2-b687-2f61913ff60c"><ac:parameter ac:name="language">json</ac:parameter><ac:plain-text-body><![CDATA[{
+}
+```
+
+- `loc` - shows the field when the error occured
+- `msg` - is the error message
+- `type` - is type of error
+
+For example:
+
+```json
+{
   "detail": [
     {
       "loc": [
@@ -665,9 +674,14 @@ If you need an account on this API, please contact us at worldwatch-request.ocd@
       }
     }
   ]
-}]]></ac:plain-text-body></ac:structured-macro>
-<h2>Errors</h2>
-<p>Errors that occurs when processing requests, creating models, authentication, checking permissions are returned in format: <code>{&quot;detail&quot;: &quot;error message&quot;}</code></p>
+}
+```
+
+### Errors
+
+Errors that occurs when processing requests, creating models, authentication, checking permissions are returned in format: `{"detail": "error message"}`
+
+
 <h2>Dates</h2>
 <p>Date passed in requests will be treated as UTC except the cases when the timezone is passed in timestamp string.</p>
 <h2>Permissions</h2>
@@ -935,7 +949,7 @@ Required data:
 <p>Endpoint used to delete advisory for given data. Returns <code>204</code> status code if no errors occurs.</p>
 <p>If <code>advisory</code> is not found the error will be raised: <code>Advisory with id: {advisory_id} not found.</code> with status code <code>404</code>.</p>
 <h3>Get HTML</h3>
-<p><strong>URL: </strong><code>/api/advisory/{advisory_id}</code> (<code>GET</code>)</p>
+<p><strong>URL: </strong><code>/api/advisory/{advisory_id}/html</code> (<code>GET</code>)</p>
 <p><strong>Permissions: </strong><code>MANAGER</code>, <code>ADMIN</code>, <code>ANALYST</code>, <code>USER</code></p>
 <p><strong>Authorization: </strong><code>APIKeyAuthentication</code></p>
 <p><strong>Throttling: </strong><code>USER_REQUESTS_PER_MIN</code> </p>
@@ -943,7 +957,7 @@ Required data:
 <p>Endpoint used to get an advisory as HTML. </p>
 <p>If <code>advisory</code> is not found the error will be raised: <code>Advisory with id: {advisory_id} not found.</code> with status code <code>404</code>.</p>
 <h3>Get HTML Minimized</h3>
-<p><strong>URL: </strong><code>/api/advisory/{advisory_id}/minimized</code> (<code>GET</code>)</p>
+<p><strong>URL: </strong><code>/api/advisory/{advisory_id}/html/minimized</code> (<code>GET</code>)</p>
 <p><strong>Permissions: </strong><code>MANAGER</code>, <code>ADMIN</code>, <code>ANALYST</code>, <code>USER</code></p>
 <p><strong>Authorization: </strong><code>APIKeyAuthentication</code></p>
 <p><strong>Throttling: </strong><code>USER_REQUESTS_PER_MIN</code> </p>
