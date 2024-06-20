@@ -1,0 +1,27 @@
+{
+  "count": 868,
+  "items": [
+    {
+      "id": 1455,
+      "tdc_id": 540692,
+      "title": "Welcome to World Watch!",
+      "severity": 0,
+      "tags": [],
+      "threat_category": "Announcement",
+      "timestamp_created": "2000-12-31T00:00:00Z",
+      "timestamp_updated": "2030-12-31T13:56:44Z",
+      "license_agreement": "This advisory has been prepared and is the property of Orange Cyberdefense. Please don't redistribute this content without our agreement."
+    },
+    {
+      "id": 1626,
+      "tdc_id": 852687,
+      "title": "Updated - Horizon3 publishes a PoC for the critical vulnerability CVE-2024-23108 in FortiSIEM",
+      "severity": 3,
+      "tags": ["cve-2024-23109", "cve-2024-23108"],
+      "threat_category": "Vulnerability",
+      "timestamp_created": "2024-02-08T10:35:07Z",
+      "timestamp_updated": "2024-05-29T16:31:40Z",
+      "license_agreement": "This advisory has been prepared and is the property of Orange Cyberdefense. Please don't redistribute this content without our agreement."
+    }
+  ]
+}
