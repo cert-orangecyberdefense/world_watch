@@ -38,7 +38,7 @@
         },
         {
           "id": 7788,
-          "title": "Vuln Watch",
+          "title": "Vulnerability Intelligence Watch",
           "url": "https://portal.cert.orangecyberdefense.com/vulns/58701",
           "description": "",
           "type": "internal"
@@ -89,7 +89,7 @@
         },
         {
           "id": 7778,
-          "title": "Vuln Watch",
+          "title": "Vulnerability Intelligence Watch",
           "url": "https://portal.cert.orangecyberdefense.com/vulns/56572",
           "description": "",
           "type": "internal"
@@ -138,7 +138,7 @@
         },
         {
           "id": 7781,
-          "title": "Vuln Watch",
+          "title": "Vulnerability Intelligence Watch",
           "url": "https://portal.cert.orangecyberdefense.com/vulns/55111",
           "description": "",
           "type": "internal"

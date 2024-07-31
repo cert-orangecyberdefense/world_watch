@@ -2,6 +2,30 @@
 
 All notable changes to this project will be documented in this file.
 
+## PreProduction - v1.5
+> 31-07-2024
+
+### Features
+
+1. GET `/api/advisories` & `/api/content_block` & `/api/content_block/complete`:
+    - support search using the **id** field 
+
+### Improvements
+
+1. GET `/*/html` & `/*/html/minimized`:
+    - better formatting for **tags**
+    - colored titles
+    - better font size and family
+    - justified text
+    - removed section numbers
+    - include only sections with content
+    - other minor improvements
+
+### Bugfix
+- force **tags** to be lowercase
+- fix invalid **datalake_url** in HTML generation
+
+
 ## Production - v1.4
 > 27-06-2024
 
