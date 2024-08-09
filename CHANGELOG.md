@@ -2,8 +2,8 @@
 
 All notable changes to this project will be documented in this file.
 
-## PreProduction - v1.5
-> 31-07-2024
+## Production - v1.5
+> 05-08-2024
 
 ### Features
 
