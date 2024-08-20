@@ -5,6 +5,14 @@ All notable changes to this project will be documented in this file.
 ## Production - v1.5
 > 05-08-2024
 
+### Production - v1.5.2
+> 14-08-2024
+
+#### Features
+
+1. GET/POST/PATCH `/api/content_block` & `/api/content_block/complete` & `/api/content_block/{id}` & `/api/content_block/{id}/minimized`:
+    - Add advisory_tags field in response 
+
 ### Features
 
 1. GET `/api/advisories` & `/api/content_block` & `/api/content_block/complete`:
