@@ -5,6 +5,24 @@ All notable changes to this project will be documented in this file.
 ## Production - v1.5
 > 05-08-2024
 
+### Production - v1.5.4
+> 28-10-2024
+
+#### Improvements
+
+- GET `/*/html` & `/*/html/minimized`: 
+    - better formatting for **tags** 
+    - removed redundant `<p>` tags in the different content sections
+    - sorted **tags**, **regions**, and **sectors** alphabetically
+
+#### Bugfix
+
+- fixed typo in the HTML generation that caused *Internal Server Error* when a **detection rule** had a description
+
+#### Other
+
+- redirection to `/api/docs` instead of **404**
+
 ### Production - v1.5.2
 > 14-08-2024
 

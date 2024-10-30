@@ -4,7 +4,7 @@ World Watch advisories now can be retrieved using a dedicated REST API, located 
 
 A Swagger is available publicly for your development tests, with the corresponding JSON [here](https://api-ww.cert.orangecyberdefense.com/api/openapi.json)
 
-If you need an account on this API, please contact us at [worldwatch-request.ocd@orange.com](mailto:worldwatch-request.ocd@orange.com)
+If you need an account on this API, please contact us at worldwatch-request.ocd AT orange.com
 
 ## Permissions
 
@@ -1098,7 +1098,7 @@ Endpoint used to get list of tags.
 
 Endpoint used to create new tag for given data.
 
-Tag name is unique. When creating tag with existing name the error will be raised: `Tag with name {name} already eixsts.`
+Tag name is unique. When creating tag with existing name the error will be raised: `Tag with name {name} already exists.`
 
 #### **Get One**
 
