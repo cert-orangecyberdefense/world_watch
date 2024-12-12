@@ -197,9 +197,7 @@ When user is created by `MANAGER`, the values of `active_until`, `company` and `
 
 The email is validated by `EmailStr` type of [pydantic](https://docs.pydantic.dev/1.10/usage/types/) that where it use [python-email-validator](https://pypi.org/project/email-validator/) to validate value of email. The email must be unique, if any user with the same email already exists the error will be returned `User with email <email> already exists.`
 
-User is created with default role `USER`. The other role can be passed in request, but `ADMIN` user can only be created by other Admin, if the creator role is different than `ADMIN` the error will be raised: `User with role: admin can be created by user with role admin.`
-
-If creating `ADMIN` when the number of active admins is max returns error `Maximum number of admins has been reached.`
+User is created with role `USER`.
 
 #### **Get Own Data**
 
@@ -263,7 +261,7 @@ If changing `manager` field but the manager is not found returns error `User not
 
 **URL:** `/api/users/{user_id}/role` (`PATCH`)
 
-**Permissions:** `MANAGER`, `ADMIN`
+**Permissions:** `ADMIN`
 
 **Authorization:** `LoginTokenAuthentication`
 
@@ -276,10 +274,6 @@ Endpoint used to update role of user for given id.
 If changing role from `ADMIN` or `MANAGER` to a new one that is not one of them all of descendants of changed user will have `manager` field set to the requesting user.
 
 If the user is not found returns error `User not found for id: {user_id}.` with status code `404`.
-
-If the user is not descendant of requesting user returns `You do not have permission to access user: {user_id}.` with status code `403`.
-
-If changing role to `ANALYST` or `ADMIN` but requesting user is not admin returns error `User with role: {requesting_user_role} cannot change users role to {new_role}.` with status code `403`.
 
 If changing role to `ADMIN` when the number of active admins is max returns error `Maximum number of admins has been reached.`
 
@@ -567,7 +561,7 @@ If the token owner is not descendant of requesting user returns `You do not have
 
 Endpoint used to get list of advisories.
 
-List can be filtered by `title`, `content`, `severity`, `tags_name`, `threat_category`, `created_before`, `created_after`, `updated_before`, `updated_after`. Searching by `tags_name` will return all **Advisories** that have these `tags` and all **Advisories** who have an associated **Content Block** that has these `tags`.Filters can be added to request as query params. In addition, you can set the `sort_by` and `sort_order` query params to sort the results. By default, the results are sorted by `updated_at` in descending order. 
+List can be filtered by  `id`, `title`, `tdc_id`, `content`, `severity`, `tags_name`, `threat_category`, `created_before`, `created_after`, `updated_before`, `updated_after`. Searching by `tags_name` will return all **Advisories** that have these `tags` and all **Advisories** who have an associated **Content Block** that has these `tags`. Filters can be added to the request as query params. In addition, you can set the `sort_by` and `sort_order` query params to sort the results. By default, the results are sorted by `updated_at` in descending order. 
 
 #### **Create One**
 
@@ -688,7 +682,7 @@ If advisory is not found the error will be raised: `Advisory with id: {advisory_
 
 Endpoint used to get list of content blocks.
 
-List can be filtered by `title`, `advisory_id`, `threat_category`, `severity`, `content`, `created_before`, `created_after`, `updated_before`, `updated_after`,`tags_name`, `sources`, `detection_rules`, `datalake_url`. Filters can be add to request as query params. In addition, you can set the `sort_by` and `sort_order` query params to sort the results. By default, the results are sorted by `updated_at` in descending order.
+List can be filtered by `id`, `title`, `advisory_id`, `threat_category`, `severity`, `content`, `created_before`, `created_after`, `updated_before`, `updated_after`,`tags_name`, `sources`, `detection_rules`, `datalake_url`. Filters can be added to the request as query params. In addition, you can set the `sort_by` and `sort_order` query params to sort the results. By default, the results are sorted by `updated_at` in descending order.
 
 #### **Create One**
 
@@ -728,7 +722,7 @@ If `sources`, `detection_rules` or `datalake_url` are not found the error will b
 
 Endpoint used to get list of content blocks. The endpoint returns additional data `executive_summary`, `what_you_will_hear`, `what_it_means`, `what_you_should_do`.
 
-List can be filtered by `title`, `advisory_id`, `threat_category_title`, `severity`, `content`, `created_before`, `created_after`, `updated_before`, `updated_after`,`tags_name`, `sources`, `detection_rules`, `datalake_url`. Filters can be add to request as query params.
+List can be filtered by `id`, `title`, `advisory_id`, `threat_category`, `severity`, `content`, `created_before`, `created_after`, `updated_before`, `updated_after`,`tags_name`, `sources`, `detection_rules`, `datalake_url`. Filters can be added to the request as query params. In addition, you can set the `sort_by` and `sort_order` query params to sort the results. By default, the results are sorted by `updated_at` in descending order.
 
 #### **Get One**
 

@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file.
 
+## Production - v1.6
+> 02-01-2025
+
+### Improvements
+
+1. More detailed logging of the API
+2. Normalize all tags to lowercase
+3. Remove incorrect ISO in tag `victim:country=uk` and replace with `victim:country=gb`
+4. Add additional fields in output of some requests:
+    - GET `/api/detection_rule/{id}` & `/api/source/{id}` & `/api/datalake_url/{id}`: add **advisory** and **content_block** fields in response
+    -  GET `/api/tags/{tag_name}` & `/api/threat_categories/{threat_category_title}`: add **advisories** and **content_blocks** fields in response
+    - POST/PATCH `/api/detection_rule/` & `/api/source/` & `/api/datalake_url/`: add **advisory** field in response
+
 ## Production - v1.5
 > 05-08-2024
 
@@ -29,11 +42,11 @@ All notable changes to this project will be documented in this file.
 #### Features
 
 1. GET/POST/PATCH `/api/content_block` & `/api/content_block/complete` & `/api/content_block/{id}` & `/api/content_block/{id}/minimized`:
-    - Add advisory_tags field in response 
+    - Add **advisory_tags** field in response 
 
 ### Features
 
-1. GET `/api/advisories` & `/api/content_block` & `/api/content_block/complete`:
+1. GET `/api/advisory` & `/api/content_block` & `/api/content_block/complete`:
     - support search using the **id** field 
 
 ### Improvements
@@ -48,6 +61,7 @@ All notable changes to this project will be documented in this file.
     - other minor improvements
 
 ### Bugfix
+
 - force **tags** to be lowercase
 - fix invalid **datalake_url** in HTML generation
 
@@ -57,7 +71,7 @@ All notable changes to this project will be documented in this file.
 
 ### Features
 
-1. GET `/api/advisories` & `/api/content_block` & `/api/content_block/complete`:
+1. GET `/api/advisory` & `/api/content_block` & `/api/content_block/complete`:
     - support search multiple values for **severity** and **threat_category** (comma separated) -> **Type of Severity in request parameters has been changed from `int` to `string`**
     i.e.
     - severity=1 -> 266 results
@@ -68,7 +82,7 @@ All notable changes to this project will be documented in this file.
     - add new **sort_by** filter, with 7 parameters: *id, severity, timestamp*, etc.
     - add new **sort_order** filter: *asc/desc*
 
-3. PATCH `/api/advisories/{advisory_id}` & `/api/content_block/{content_block_id}`:
+3. PATCH `/api/advisory/{advisory_id}` & `/api/content_block/{content_block_id}`:
     - does not update **timestamp_updated** if only **tags** are updated
 
 ### Bugfix
@@ -80,7 +94,7 @@ All notable changes to this project will be documented in this file.
     
 ### Features
 
-1. GET `/api/advisories`:
+1. GET `/api/advisory`:
     - new parameter to search by **tdc_id** 
     - parameter to search by tags: respond if **advisories** OR **content_block** is tagged (NB: advisories are often tagged with a single tag, but each **content_block** has possibly multiple ones. Details of an advisories using `/advisories/ID` will give you which **content_block** has the searched for tag if needed)
 
