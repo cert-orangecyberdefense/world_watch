@@ -561,7 +561,7 @@ If the token owner is not descendant of requesting user returns `You do not have
 
 Endpoint used to get list of advisories.
 
-List can be filtered by  `id`, `title`, `tdc_id`, `content`, `severity`, `tags_name`, `threat_category`, `created_before`, `created_after`, `updated_before`, `updated_after`. Searching by `tags_name` will return all **Advisories** that have these `tags` and all **Advisories** who have an associated **Content Block** that has these `tags`. Filters can be added to the request as query params. In addition, you can set the `sort_by` and `sort_order` query params to sort the results. By default, the results are sorted by `updated_at` in descending order. 
+List can be filtered by  `id`, `title`, `tdc_id`, `content`, `severity`, `tags`, `threat_category`, `created_before`, `created_after`, `updated_before`, `updated_after`. You can pass multiple values separated by commas to `tags`. Searching by `tags` will return all **Advisories** that have these `tags` and all **Advisories** who have an associated **Content Block** that has these `tags`. Filters can be added to the request as query params. In addition, you can set the `sort_by` and `sort_order` query params to sort the results. By default, the results are sorted by `updated_at` in descending order. 
 
 #### **Create One**
 
@@ -682,7 +682,7 @@ If advisory is not found the error will be raised: `Advisory with id: {advisory_
 
 Endpoint used to get list of content blocks.
 
-List can be filtered by `id`, `title`, `advisory_id`, `threat_category`, `severity`, `content`, `created_before`, `created_after`, `updated_before`, `updated_after`,`tags_name`, `sources`, `detection_rules`, `datalake_url`. Filters can be added to the request as query params. In addition, you can set the `sort_by` and `sort_order` query params to sort the results. By default, the results are sorted by `updated_at` in descending order.
+List can be filtered by `id`, `title`, `advisory_id`, `threat_category`, `severity`, `content`, `created_before`, `created_after`, `updated_before`, `updated_after`,`tags`, `sources`, `detection_rules`, `datalake_url`. You can pass multiple values separated by commas to `tags`. Filters can be added to the request as query params. In addition, you can set the `sort_by` and `sort_order` query params to sort the results. By default, the results are sorted by `updated_at` in descending order.
 
 #### **Create One**
 
@@ -722,7 +722,7 @@ If `sources`, `detection_rules` or `datalake_url` are not found the error will b
 
 Endpoint used to get list of content blocks. The endpoint returns additional data `executive_summary`, `what_you_will_hear`, `what_it_means`, `what_you_should_do`.
 
-List can be filtered by `id`, `title`, `advisory_id`, `threat_category`, `severity`, `content`, `created_before`, `created_after`, `updated_before`, `updated_after`,`tags_name`, `sources`, `detection_rules`, `datalake_url`. Filters can be added to the request as query params. In addition, you can set the `sort_by` and `sort_order` query params to sort the results. By default, the results are sorted by `updated_at` in descending order.
+List can be filtered by `id`, `title`, `advisory_id`, `threat_category`, `severity`, `content`, `created_before`, `created_after`, `updated_before`, `updated_after`,`tags`, `sources`, `detection_rules`, `datalake_url`. You can pass multiple values separated by commas to `tags`. Filters can be added to the request as query params. In addition, you can set the `sort_by` and `sort_order` query params to sort the results. By default, the results are sorted by `updated_at` in descending order.
 
 #### **Get One**
 

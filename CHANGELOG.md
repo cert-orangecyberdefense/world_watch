@@ -15,6 +15,16 @@ All notable changes to this project will be documented in this file.
     -  GET `/api/tags/{tag_name}` & `/api/threat_categories/{threat_category_title}`: add **advisories** and **content_blocks** fields in response
     - POST/PATCH `/api/detection_rule/` & `/api/source/` & `/api/datalake_url/`: add **advisory** field in response
 
+### Production - v1.6.1
+> 09-01-2025
+
+### Improvements
+
+1. Support for filtering **advisories** and **content_blocks** by multiple **tags**:
+    - Renaming of filter field **tags_name** to **tags** in GET `/api/advisory` & `/api/content_block/` & `/api/content_block/complete/` 
+    - Field now supports multiple values separated by commas
+2. Sorted response of GET `/api/tags` & `/api/threat_categories` alphabetically
+
 ## Production - v1.5
 > 05-08-2024
 
