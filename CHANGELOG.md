@@ -25,6 +25,18 @@ All notable changes to this project will be documented in this file.
     - Field now supports multiple values separated by commas
 2. Sorted response of GET `/api/tags` & `/api/threat_categories` alphabetically
 
+### Production - v1.6.2
+> 25-03-2025
+
+### Improvements
+
+1. Added small description for **tags**, **tags_name**, and **severity** fields in GET `/api/advisory` & `/api/content_block/` & `/api/content_block/complete/` 
+
+### Bugfix
+
+1. Fix bug where filtering using **tags** or **tags_name** will return incomplete results in GET `/api/advisory` & `/api/content_block/` & `/api/content_block/complete/` 
+
+
 ## Production - v1.5
 > 05-08-2024
 
