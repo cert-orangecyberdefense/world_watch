@@ -5,6 +5,44 @@ All notable changes to this project will be documented in this file.
 ## Production - v1.6
 > 02-01-2025
 
+### Production - v1.6.3
+> 17-04-2025
+
+#### Changes
+
+1. Email routes now require **email** instead of **user_id**. The routes were changed to reflect this change:
+    - POST `/api/users/{user_id}/send_password_reset` → POST `/api/users/send_password_reset`
+    - POST `/api/users/{user_id}/send_invitation` → POST `/api/users/send_invitation`
+	
+2. Addition of **change password** route to be able to modify password while connected
+	- POST `/api/users/change_password`
+	
+3. **Email** and **Login** tokens will be revoked after doing sensitive operations:
+	- POST `/api/users/activate`
+    - POST `/api/users/change_password` 
+    - POST `/api/users/reset_password` 
+
+### Production - v1.6.2
+> 25-03-2025
+
+#### Improvements
+
+1. Added small description for **tags**, **tags_name**, and **severity** fields in GET `/api/advisory` & `/api/content_block/` & `/api/content_block/complete/` 
+
+#### Bugfix
+
+1. Fix bug where filtering using **tags** or **tags_name** will return incomplete results in GET `/api/advisory` & `/api/content_block/` & `/api/content_block/complete/` 
+
+### Production - v1.6.1
+> 09-01-2025
+
+#### Improvements
+
+1. Support for filtering **advisories** and **content_blocks** by multiple **tags**:
+    - Renaming of filter field **tags_name** to **tags** in GET `/api/advisory` & `/api/content_block/` & `/api/content_block/complete/` 
+    - Field now supports multiple values separated by commas
+2. Sorted response of GET `/api/tags` & `/api/threat_categories` alphabetically
+
 ### Improvements
 
 1. More detailed logging of the API
@@ -14,28 +52,6 @@ All notable changes to this project will be documented in this file.
     - GET `/api/detection_rule/{id}` & `/api/source/{id}` & `/api/datalake_url/{id}`: add **advisory** and **content_block** fields in response
     -  GET `/api/tags/{tag_name}` & `/api/threat_categories/{threat_category_title}`: add **advisories** and **content_blocks** fields in response
     - POST/PATCH `/api/detection_rule/` & `/api/source/` & `/api/datalake_url/`: add **advisory** field in response
-
-### Production - v1.6.1
-> 09-01-2025
-
-### Improvements
-
-1. Support for filtering **advisories** and **content_blocks** by multiple **tags**:
-    - Renaming of filter field **tags_name** to **tags** in GET `/api/advisory` & `/api/content_block/` & `/api/content_block/complete/` 
-    - Field now supports multiple values separated by commas
-2. Sorted response of GET `/api/tags` & `/api/threat_categories` alphabetically
-
-### Production - v1.6.2
-> 25-03-2025
-
-### Improvements
-
-1. Added small description for **tags**, **tags_name**, and **severity** fields in GET `/api/advisory` & `/api/content_block/` & `/api/content_block/complete/` 
-
-### Bugfix
-
-1. Fix bug where filtering using **tags** or **tags_name** will return incomplete results in GET `/api/advisory` & `/api/content_block/` & `/api/content_block/complete/` 
-
 
 ## Production - v1.5
 > 05-08-2024

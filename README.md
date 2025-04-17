@@ -11,12 +11,9 @@ If you need an account on this API, please contact us at worldwatch-request.ocd 
 ### Keys
 
 There are three types of keys:
-
-*   EmailKeyAuthentication
-    
-*   LoginTokenAuthentication
-    
-*   APIKeyAuthentication
+- EmailKeyAuthentication
+- LoginTokenAuthentication
+- APIKeyAuthentication
     
 
 Different endpoints use different keys, and one user can have multiple keys at the same time.
@@ -26,14 +23,10 @@ You can know which endpoint uses which key by checking the [endpoints](#endpoint
 ### User Role
 
 There are four roles that a user can have:
-
-*   Admin
-    
-*   Manager
-    
-*   User
-    
-*   Analyst
+- Admin
+- Manager
+- User
+- Analyst
     
 
 Different endpoints require different roles, and each user can have at most one role.
@@ -53,7 +46,7 @@ You will need to:
 
 1.  While authenticated, call the `/api/users [POST]` endpoint. It will return a user instance with an **id**
     
-2.  While authenticated, call the `/api/users/{user_id}/send_invitation [POST]` endpoint. The user will receive an email with their **EmailKeyAuthentication**.
+2.  While authenticated, call the `/api/users/send_invitation [POST]` endpoint. The user will receive an email with their **EmailKeyAuthentication**.
     
 3.  The user should use his **EmailKeyAuthentication** and call the `/api/users/validate [POST]` endpoint with his password.
     
@@ -365,7 +358,7 @@ If the user is not descendant of requesting user returns `You do not have permis
 
 #### **Send Invitation**
 
-**URL:** `/api/users/{user_id}/send_invitation` (`POST`)
+**URL:** `/api/users/send_invitation` (`POST`)
 
 **Permissions:** `ADMIN`, `MANAGER`
 
@@ -375,7 +368,7 @@ If the user is not descendant of requesting user returns `You do not have permis
 
 **Description:**
 
-Endpoint used to send invitation email to user for given id.
+Endpoint used to send invitation email to user for given email.
 
 It creates `EmailKey` with 8h expiration and send it in the email body.
 
@@ -386,10 +379,6 @@ then use "Activate" endpoint.
 
 Your authentication key is:
 "EmailKeyAuthentication": "{{token\_key}}".
-
-If the user is not found returns error `User not found for id: {user_id}.` with status code `404`.
-
-If the user is not descendant of requesting user returns `You do not have permission to access user: {user_id}.` with status code `403`.
 
 If the user is already verified returns error `User has been already verified` with status code `400`.
 
@@ -407,9 +396,24 @@ If the user is already verified returns error `User has been already verified` w
 
 Endpoint used to verify user for given `EmailKey`. It set `verified` flag to `True` and set password to given value.
 
+#### **Reset Password**
+
+**URL:** `/api/users/change_password`(`POST`)
+
+**Permissions:** `MANAGER`, `ADMIN`, `ANALYST`, `USER`
+
+**Authorization:** `LoginTokenAuthentication`
+
+**Throttling:** `USER_REQUESTS_PER_MIN`
+
+**Description:**
+
+Endpoint used to modify the password to given value for a user that is already logged in. This will revoke all `EmailKeyAuthentication` and `LoginKeyAuthentication`.
+
+
 #### **Request Password Reset**
 
-**URL:** `/api/users/{user_id}/send_password_reset-request` (`POST`)
+**URL:** `/api/users/send_password_reset_request` (`POST`)
 
 **Permissions:** `Not set`
 
@@ -419,7 +423,7 @@ Endpoint used to verify user for given `EmailKey`. It set `verified` flag to `Tr
 
 **Description:**
 
-Endpoint used to send invitation email to user for given id. Returns `204` status code if no error occurs.
+Endpoint used to send the password reset token email to the user for given email. Returns `202` status code if no error occurs.
 
 It creates `EmailKey` with 8h expiration and send it in the email body.
 
@@ -436,8 +440,6 @@ Required data:
     "password": "<your new password>"
     "password\_confirmation": "<your new password>"
 }
-
-If the user is not found returns error `User not found for id: {user_id}.` with status code `404`.
 
 #### **Reset Password**
 
