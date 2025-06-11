@@ -9,7 +9,7 @@ TOKEN = os.getenv("API-TOKEN")
 base_url = "https://api-ww.cert.orangecyberdefense.com"
 headers = {"Authorization": TOKEN}
 tag = "unc3886"
-params = {"tags_name": tag}
+params = {"tags": tag}
 
 response = requests.get(f"{base_url}/api/advisory/", headers=headers, params=params)
 advisories = response.json()

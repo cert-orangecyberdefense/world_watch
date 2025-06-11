@@ -130,7 +130,7 @@ If not met, returns error `You do not have permissions to perform this action.` 
 
 ### Pagination
 
-`Limit` and `Offset` can be set as query params for listing `users`, `content_block`, `advisories`, `threat_categories`, `sources`, `detection_rules`, `tags`, and `datalake_url`. Default limit is set in ENV `PAGINATION_PER_PAGE`.
+`Limit` and `Offset` can be set as query params for listing `users`, `content_block`, `advisories`, `categories`, `sources`, `detection_rules`, `tags`, and `datalake_url`. Default limit is set in ENV `PAGINATION_PER_PAGE`.
 
 ## Endpoints
 
@@ -563,7 +563,9 @@ If the token owner is not descendant of requesting user returns `You do not have
 
 Endpoint used to get list of advisories.
 
-List can be filtered by  `id`, `title`, `tdc_id`, `content`, `severity`, `tags`, `threat_category`, `created_before`, `created_after`, `updated_before`, `updated_after`. You can pass multiple values separated by commas to `tags`. Searching by `tags` will return all **Advisories** that have these `tags` and all **Advisories** who have an associated **Content Block** that has these `tags`. Filters can be added to the request as query params. In addition, you can set the `sort_by` and `sort_order` query params to sort the results. By default, the results are sorted by `updated_at` in descending order. 
+The `categories` field in the response corresponds to a **concatenation** of all the `categories` of this advisory's content blocks.
+
+List can be filtered by  `id`, `title`, `tdc_id`, `content`, `severity`, `tags`, `categories`, `created_before`, `created_after`, `updated_before`, `updated_after`. You can pass multiple values separated by commas to `tags` and `categories`. Searching by `tags` will return all **Advisories** that have these `tags` and all **Advisories** who have an associated **Content Block** that has these `tags`. Searching by `categories` will return all **Advisories** that have at least one **Content Block** that has these `categories`. Filters can be added to the request as query params. In addition, you can set the `sort_by` and `sort_order` query params to sort the results. By default, the results are sorted by `updated_at` in descending order. 
 
 #### **Create One**
 
@@ -578,8 +580,6 @@ List can be filtered by  `id`, `title`, `tdc_id`, `content`, `severity`, `tags`,
 **Description:**
 
 Endpoint used to create new advisory for given data.
-
-If given `threat_category` is not found the error will be raised: `ThreatCategory with title: {title} not found` with status code `404`
 
 The `tags` will be set using existing records, if the records don't exists, new will be created.
 
@@ -596,6 +596,8 @@ The `tags` will be set using existing records, if the records don't exists, new 
 **Description:**
 
 Endpoint used to get advisory data for given id.
+
+The `categories` field in the response corresponds to a **concatenation** of all the `categories` of this advisory's content blocks.
 
 If `advisory` is not found the error will be raised: `Advisory with id: {advisory_id} not found.` with status code `404`.
 
@@ -614,8 +616,6 @@ If `advisory` is not found the error will be raised: `Advisory with id: {advisor
 Endpoint used to update advisory for given data.
 
 If `advisory` is not found the error will be raised: `Advisory with id: {advisory_id} not found.` with status code `404`.
-
-If given `threat_category` is not found the error will be raised: `ThreatCategory with title: {title} not found` with status code `404`
 
 The `tags` will be set using existing records, if the records don't exists, new will be created.
 
@@ -684,7 +684,9 @@ If advisory is not found the error will be raised: `Advisory with id: {advisory_
 
 Endpoint used to get list of content blocks.
 
-List can be filtered by `id`, `title`, `advisory_id`, `threat_category`, `severity`, `content`, `created_before`, `created_after`, `updated_before`, `updated_after`,`tags`, `sources`, `detection_rules`, `datalake_url`. You can pass multiple values separated by commas to `tags`. Filters can be added to the request as query params. In addition, you can set the `sort_by` and `sort_order` query params to sort the results. By default, the results are sorted by `updated_at` in descending order.
+The `advisory_tags` field in the response corresponds to the **tags of the parent advisory**.
+
+List can be filtered by `id`, `title`, `advisory_id`, `categories`, `severity`, `content`, `created_before`, `created_after`, `updated_before`, `updated_after`,`tags`, `sources`, `detection_rules`, `datalake_url`. You can pass multiple values separated by commas to `tags` and `categories`. Filters can be added to the request as query params. In addition, you can set the `sort_by` and `sort_order` query params to sort the results. By default, the results are sorted by `updated_at` in descending order.
 
 #### **Create One**
 
@@ -704,8 +706,6 @@ The `analyst` and `last_modified_by` are set to user that creates content\_block
 
 If given `advisory` is not found the error will be raised: `Advisory with id: {advisory_id} not found.` with status code `404`
 
-If given `threat_category` is not found the error will be raised: `ThreatCategory with title: {title} not found` with status code `404`
-
 The `tags` will be set using existing records, if the records don't exists, new will be created.
 
 If `sources`, `detection_rules` or `datalake_url` are not found the error will be raised: `No {name_of_field} found for given data.` with status code `404`
@@ -724,7 +724,9 @@ If `sources`, `detection_rules` or `datalake_url` are not found the error will b
 
 Endpoint used to get list of content blocks. The endpoint returns additional data `executive_summary`, `what_you_will_hear`, `what_it_means`, `what_you_should_do`.
 
-List can be filtered by `id`, `title`, `advisory_id`, `threat_category`, `severity`, `content`, `created_before`, `created_after`, `updated_before`, `updated_after`,`tags`, `sources`, `detection_rules`, `datalake_url`. You can pass multiple values separated by commas to `tags`. Filters can be added to the request as query params. In addition, you can set the `sort_by` and `sort_order` query params to sort the results. By default, the results are sorted by `updated_at` in descending order.
+The `categories` field in the response corresponds to a **concatenation** of all the `categories` of this advisory's content blocks.
+
+List can be filtered by `id`, `title`, `advisory_id`, `categories`, `severity`, `content`, `created_before`, `created_after`, `updated_before`, `updated_after`,`tags`, `sources`, `detection_rules`, `datalake_url`. You can pass multiple values separated by commas to `tags` and `categories`. Filters can be added to the request as query params. In addition, you can set the `sort_by` and `sort_order` query params to sort the results. By default, the results are sorted by `updated_at` in descending order.
 
 #### **Get One**
 
@@ -739,6 +741,8 @@ List can be filtered by `id`, `title`, `advisory_id`, `threat_category`, `severi
 **Description:**
 
 Endpoint used to get a content block data for given id.
+
+The `categories` field in the response corresponds to a **concatenation** of all the `categories` of this advisory's content blocks.
 
 If the content block is not found returns error `Content block with id: {content_block_id} not found.` with status code `404`.
 
@@ -761,8 +765,6 @@ If the content\_block is not found returns error `Content block with id: {conten
 The `last_modified_by` is set to user that updates content block.
 
 If given `advisory` is not found the error will be raised: `Advisory with id: {advisory_id} not found.` with status code `404`
-
-If given `threat_category` is not found the error will be raised: `ThreatCategory with title: {title} not found` with status code `404`
 
 The `tags` will be set using existing records, if the records don't exists, new will be created.
 
@@ -1128,11 +1130,11 @@ Endpoint used to delete tag for given data. Returns `204` status code if no erro
 
 If `tag` is not found the error will be raised: `Tag with name {tag_name} not found.` with status code `404`.
 
-### Threat Category
+### Categories
 
 #### **List All**
 
-**URL:** `/api/threat_category` (`GET`)
+**URL:** `/api/categories/` (`GET`)
 
 **Permissions:** `MANAGER`, `ADMIN`, `ANALYST`, `USER`
 
@@ -1142,27 +1144,11 @@ If `tag` is not found the error will be raised: `Tag with name {tag_name} not fo
 
 **Description:**
 
-Endpoint used to get list of threat categories.
-
-#### **Create One**
-
-**URL:** `/api/threat_category`(`POST`)
-
-**Permissions:** `ANALYST`, `ADMIN`
-
-**Authorization:** `APIKeyAuthentication`
-
-**Throttling:** `USER_REQUESTS_PER_MIN`
-
-**Description:**
-
-Endpoint used to create new threat category for given data.
-
-Threat category title is unique. When trying to create a record with existing title the error will be raised: `ThreatCategory with title {title} already exists.` with status code `400`
+Endpoint used to get list of categories.
 
 #### **Get One**
 
-**URL:** `/api/threat_category /{threat_category_title}` (`GET`)
+**URL:** `/api/categories/{category_name}` (`GET`)
 
 **Permissions:** `MANAGER`, `ADMIN`, `ANALYST`, `USER`
 
@@ -1172,25 +1158,9 @@ Threat category title is unique. When trying to create a record with existing ti
 
 **Description:**
 
-Endpoint used to get threat category data for given title.
+Endpoint used to get category data for given category name.
 
-If `threat_category`is not found the error will be raised: `ThreatCategory with title: {threat_category_title} not found.` with status code `404`.
-
-#### **Delete One**
-
-**URL:** `/api/threat_category/{threat_category_title}`(`DELETE`)
-
-**Permissions:** `ANALYST`, `ADMIN`
-
-**Authorization:** `APIKeyAuthentication`
-
-**Throttling:** `USER_REQUESTS_PER_MIN`
-
-**Description:**
-
-Endpoint used to delete a threat category for given title. Returns `204` status code if no errors occurs.
-
-If `threat_category`is not found the error will be raised: `ThreatCategory with title: {threat_category_title} not found.` with status code `404`.
+If `category`is not found the error will be raised: `Category with title: {category_name} not found.` with status code `404`.
 
 
 ## Models
@@ -1232,12 +1202,12 @@ If `threat_category`is not found the error will be raised: `ThreatCategory with 
 
 ### Content
 
-#### Table: `Threat Categories`
+#### Table: `Categories`
 
 | Column | Type | Constraints |
 | --- | --- | --- |
 | id  | integer |     |
-| title | string | max\_length=50, unique |
+| name | string | max\_length=50, unique |
 
 - - -
 
@@ -1258,7 +1228,6 @@ If `threat_category`is not found the error will be raised: `ThreatCategory with 
 | tdc\_id | integer | null=True, blank=True |
 | title | string | max\_length=200 |
 | severity | integer | allowed\_range \[0, 5\] |
-| threat\_category | integer |     |
 | timestamp\_created | datetime |     |
 | timestamp\_updated | datetime |     |
 | license\_agreement | string | max\_length=2048, default="This advisory has been prepared and is the property of Orange Cyberdefense. Please don't redistribute this content without our agreement." |
@@ -1282,7 +1251,6 @@ If `threat_category`is not found the error will be raised: `ThreatCategory with 
 | what\_you\_should\_do | text |     |
 | what\_we\_are\_doing | text |     |
 | other | text |     |
-| threat\_category | integer |     |
 | timestamp\_created | datetime |     |
 | timestamp\_updated | datetime |     |
 

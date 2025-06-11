@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file.
 
+## Production - v1.7
+> 11-06-2025
+
+### Improvements:
+1. **Cleanup of query parameters** types in GET requests
+ 
+### Changes:
+1. Removal of `tags_name` search parameter
+2. Indicate the **(future) deprecation** of `threat_category`
+
+### Features:
+- Addition of `categories` field for each **Content Block**:
+    - Filter in GET `/api/advisories` & `/api/content_block` & `/api/content_block/complete`
+    - Include in GET `/*/html` & `/*/html/minimized`
+    - Response field for every **Content Block**
+    - Response field for every **Advisory**: a **concatenation** of the `categories` of all its **Content Blocks**
+
 ## Production - v1.6
 > 02-01-2025
 
