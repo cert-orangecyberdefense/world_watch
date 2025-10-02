@@ -48,7 +48,6 @@ The response should be:
         "ai",
         "takedown"
       ],
-      "threat_category": "Threat",
       "timestamp_created": "2024-02-19T11:40:09Z",
       "timestamp_updated": "2025-07-03T10:18:26Z",
       "license_agreement": "This advisory has been prepared and is the property of Orange Cyberdefense. Please don't redistribute this content without our agreement."

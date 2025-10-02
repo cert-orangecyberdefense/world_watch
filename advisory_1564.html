@@ -765,20 +765,20 @@
       <p>On Tuesday, June 18, Mandiant released a threat intelligence report on the Chinese threat actor <strong>UNC3886</strong>. In January this year, they <a href="https://cloud.google.com/blog/topics/threat-intelligence/chinese-vmware-exploitation-since-2021/?hl=en">had revealed </a>that CVE-2023-34048 affecting VMware had been exploited for over two years by this threat actor (<em>see our previous update</em>). In this new report, Mandiant highlights all known activities of this group. UNC3886 attack chain leads notably to privileged command execution and file transfers within ESXi hypervisors and guest VMs through the following vulnerabilities:</p>
 
 <ul>
-	<li><strong>CVE-2023-34048</strong> (<em><a href="https://portal.cert.orangecyberdefense.com/vulns/58701">link</a> to the vulnerability advisory for our customers</em>): a 0-day in VMware vCenter Server that allows to execute arbitrary code via specially crafted requests,</li>
-	<li><strong>CVE-2023-20867</strong> (<em><a href="https://portal.cert.orangecyberdefense.com/vulns/56572">link</a> to the vulnerability advisory for our customers</em>): a 0-day in VMware Tools that allows a local attacker with root access on a ESXi host to bypass the authentication of host-to-guest operations,</li>
-	<li><strong>CVE-2022-22948</strong> (<em><a href="https://portal.cert.orangecyberdefense.com/vulns/50290">link</a> to the vulnerability advisory for our customers</em>): a 0-day in VMware vCenter Server and Cloud Foundation that allows a local attacker to gain access to sensitive information,</li>
-	<li><strong>CVE-2022-41328</strong> (<em><a href="https://portal.cert.orangecyberdefense.com/vulns/55111">link</a> to the vulnerability advisory for our customers</em>): a 0-day in Fortinet FortiOS that allows a local attacker to read and write files on the underlying Linux system,</li>
-	<li><strong>CVE-2022-42475</strong> (<em><a href="https://portal.cert.orangecyberdefense.com/vulns/53919">link</a> to the vulnerability advisory for our customers</em>): a vulnerability in Fortinet FortiOS, allowing a remote attacker to execute arbitrary code or commands, abused after its public release.</li>
+<li><strong>CVE-2023-34048</strong> (<em><a href="https://portal.cert.orangecyberdefense.com/vulns/58701">link</a> to the vulnerability advisory for our customers</em>): a 0-day in VMware vCenter Server that allows to execute arbitrary code via specially crafted requests,</li>
+    <li><strong>CVE-2023-20867</strong> (<em><a href="https://portal.cert.orangecyberdefense.com/vulns/56572">link</a> to the vulnerability advisory for our customers</em>): a 0-day in VMware Tools that allows a local attacker with root access on a ESXi host to bypass the authentication of host-to-guest operations,</li>
+    <li><strong>CVE-2022-22948</strong> (<em><a href="https://portal.cert.orangecyberdefense.com/vulns/50290">link</a> to the vulnerability advisory for our customers</em>): a 0-day in VMware vCenter Server and Cloud Foundation that allows a local attacker to gain access to sensitive information,</li>
+    <li><strong>CVE-2022-41328</strong> (<em><a href="https://portal.cert.orangecyberdefense.com/vulns/55111">link</a> to the vulnerability advisory for our customers</em>): a 0-day in Fortinet FortiOS that allows a local attacker to read and write files on the underlying Linux system,</li>
+    <li><strong>CVE-2022-42475</strong> (<em><a href="https://portal.cert.orangecyberdefense.com/vulns/53919">link</a> to the vulnerability advisory for our customers</em>): a vulnerability in Fortinet FortiOS, allowing a remote attacker to execute arbitrary code or commands, abused after its public release.</li>
 </ul>
 
 <p>In addition to these exploited vulnerabilities, Mandiant&rsquo;s teams discovered several tools used by the threat actor, such as:</p>
 
 <ul>
-	<li><strong>REPTILE</strong>: an open-source rootkit, allowing to establish a backdoor but also to control compromise endpoints by port knocking. Its use can be traced back to at least 2020.</li>
-	<li><strong>MEDUSA</strong>, also an open-source rootkit, that allows, in addition to the basic functionality of a rootkit, to log user credentials and commands, in order to move laterally in the network. SSH credentials were stolen using this tool through a custom SSH server.</li>
-	<li><strong>MOPSLEB</strong>: a backdoor shared between several Chinese groups including the <a href="https://portal.cert.orangecyberdefense.com/worldwatch/556546">APT41</a> nexus, which allows C2 communication via HTTP using a ChaCha20 algorithm to decrypt the configuration file.</li>
-	<li><strong>RIFLESPINE</strong>: a backdoor that encrypts data with an AES algorithm and exfiltrates files via Google Drive.</li>
+    <li><strong>REPTILE</strong>: an open-source rootkit, allowing to establish a backdoor but also to control compromise endpoints by port knocking. Its use can be traced back to at least 2020.</li>
+    <li><strong>MEDUSA</strong>, also an open-source rootkit, that allows, in addition to the basic functionality of a rootkit, to log user credentials and commands, in order to move laterally in the network. SSH credentials were stolen using this tool through a custom SSH server.</li>
+    <li><strong>MOPSLEB</strong>: a backdoor shared between several Chinese groups including the <a href="https://portal.cert.orangecyberdefense.com/worldwatch/556546">APT41</a> nexus, which allows C2 communication via HTTP using a ChaCha20 algorithm to decrypt the configuration file.</li>
+    <li><strong>RIFLESPINE</strong>: a backdoor that encrypts data with an AES algorithm and exfiltrates files via Google Drive.</li>
 </ul>
 
 <p>This APT group thus exhibits a persistent, cautious, evasive, and sophisticated behavior in its malevolent activities, necessitating that we maintain a high threat level associated with it.</p>
@@ -1085,8 +1085,8 @@ It is worth mentioning that as reported in our initial advisory below, UNC3886 h
 &nbsp;</p>
 
 <ul>
-	<li>the harvesting of connected ESXi service account credentials on vCenter servers (abusing another older VMware numbered <a href="https://portal.cert.orangecyberdefense.com/vulns/50290">CVE-2023-22948,</a></li>
-	<li>the capabilities of the VMCI socket backdoor.</li>
+    <li>the harvesting of connected ESXi service account credentials on vCenter servers (abusing another older VMware numbered <a href="https://portal.cert.orangecyberdefense.com/vulns/50290">CVE-2023-22948,</a></li>
+    <li>the capabilities of the VMCI socket backdoor.</li>
 </ul>
 
 <p>&nbsp;</p>
@@ -1351,9 +1351,9 @@ Due to the high sophistication of this campaign, which included deploying multip
 VirtualPita is a 64-bit passive backdoor that creates a listener on a hardcoded port number on a compromised VMware ESXi server. It often uses legitimate VMware service names and ports to masquerade as a legitimate service. The backdoor supports the following features:</p>
 
 <ul>
-	<li>arbitrary command execution,</li>
-	<li>file upload and download,</li>
-	<li>and the ability to start and stop the VMware&#39;s logging daemon &quot;vmsyslogd&quot;.</li>
+    <li>arbitrary command execution,</li>
+    <li>file upload and download,</li>
+    <li>and the ability to start and stop the VMware&#39;s logging daemon &quot;vmsyslogd&quot;.</li>
 </ul>
 
 <p><br />
@@ -1363,9 +1363,9 @@ VirtualPie is a lightweight Python-based backdoor that spawns an IPv6 listener o
 <p>&nbsp;</p>
 
 <ul>
-	<li>arbitrary command execution,</li>
-	<li>file transfer</li>
-	<li>and reverse shell capabilities.</li>
+    <li>arbitrary command execution,</li>
+    <li>file transfer</li>
+    <li>and reverse shell capabilities.</li>
 </ul>
 
 <p><br />
@@ -2035,4 +2035,3 @@ As for post-exploitation, the attacker executed commands observed by Mandiant fo
                 <br>
                 <br>
                 <br>
-                
