@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file.
 
+## Production - v1.8
+> 20-10-2025
+
+### Improvements:
+1. Added search fields on `datalake_url`, `detection_rule`, `source`, and `tags`
+
+### Features:
+1. Added an **RSS feeds** ([info](https://github.com/cert-orangecyberdefense/world_watch/blob/main/RSS.md))
+    - **Free feed** with limited content
+    - **Premium feeds** accessible to users with Manager role
+
 ## Production - v1.7
 > 11-06-2025
 
