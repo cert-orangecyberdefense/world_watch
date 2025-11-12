@@ -16,6 +16,12 @@ All notable changes to this project will be documented in this file.
 ## Production - v1.7
 > 11-06-2025
 
+### Production - v1.7.4
+> 11-09-2025
+
+#### Changes:
+1. Removal of `threat_category`
+
 ### Improvements:
 1. **Cleanup of query parameters** types in GET requests
  

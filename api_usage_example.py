@@ -31,7 +31,7 @@ params = {"title": "salt"}
 response = requests.get(f"{base_url}/api/advisory/", headers=headers, params=params)
 advisories = response.json()
 if advisories['count'] == 0:
-    print(f"No advisories found that has 'salt' in title")
+    print("No advisories found that has 'salt' in title")
 else:
     for item in advisories["items"]:
         print(f"{item['id']} - '{item['title']}'")
@@ -47,7 +47,7 @@ params = {"severity": "4,5", "limit": 5}
 response = requests.get(f"{base_url}/api/advisory/", headers=headers, params=params)
 advisories = response.json()
 if advisories['count'] == 0:
-    print(f"No advisories found that has severity 4 or 5")
+    print("No advisories found that has severity 4 or 5")
 else:
     for item in advisories["items"]:
         print(f"{item['id']} - '{item['title']}' - {item['severity']}")
