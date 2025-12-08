@@ -2,6 +2,41 @@
 
 All notable changes to this project will be documented in this file.
 
+## Production - v1.9
+> 31-11-2025
+
+### Features:
+1. Automatic extraction of **MITRE TTPs** for each `Source type:external`
+    - **HTML** table added in `description` field of the `source`
+    - `source` filter in GET `/api/advisories` & `/api/content_block` & `/api/content_block/complete` can take **comma-separated values** and will lookup in *title*, *url*, and *description*
+        i.e.
+        - `source=execution` -> will return all objects that have at least one `source` that has a TTP associated with the tactic *execution*
+        vs.
+        - `source=Valid Accounts: domain accounts,t1484` -> will return all objects that satisfy the *Valid Accounts: domain accounts* **AND** *t1484*
+    - Table will be automatically rendered when using the `*/html/*` endpoints:
+        ```html
+        <div id="update-header" style="font-family:'Segoe UI Web (West European)',Segoe UI,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,sans-serif; font-size:small">
+            <table cellspacing="0" class="table table-hover table-striped" style="border-collapse:collapse; max-width:600px; width:100%">
+                <thead>
+                    <tr>
+                        <th style="background-color:#f3f3f3; text-align:left; white-space:nowrap">Tactic</th>
+                        <th style="background-color:#f3f3f3; text-align:left; white-space:nowrap">Technique ID</th>
+                        <th style="background-color:#f3f3f3; text-align:left; white-space:nowrap">Technique Name</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td style="border-color:#dddddd; border-style:solid; border-width:1px; vertical-align:top">Discovery</td>
+                        <td style="border-color:#dddddd; border-style:solid; border-width:1px; vertical-align:top">T1087</td>
+                        <td style="border-color:#dddddd; border-style:solid; border-width:1px; vertical-align:top">Account Discovery</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <p>This information was automatically generated - please review the details carefully.</p>
+        </div>
+        ```
+
 ## Production - v1.8
 > 20-10-2025
 
