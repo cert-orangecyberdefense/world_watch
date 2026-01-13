@@ -5,6 +5,12 @@ All notable changes to this project will be documented in this file.
 ## Production - v1.9
 > 31-11-2025
 
+### Production - v1.7.4
+> 11-09-2025
+
+#### Features:
+1. Add search field `description` in **Sources** list
+
 ### Features:
 1. Automatic extraction of **MITRE TTPs** for each `Source type:external`
     - **HTML** table added in `description` field of the `source`
