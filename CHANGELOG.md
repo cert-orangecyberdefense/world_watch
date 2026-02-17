@@ -5,8 +5,31 @@ All notable changes to this project will be documented in this file.
 ## Production - v1.9
 > 31-11-2025
 
-### Production - v1.7.4
-> 11-09-2025
+### Production - v1.9.2
+> 17-02-2026
+
+#### Features:
+
+1. Add  **Markdown** generation endpoints, similar to the `*/html/*` but for **Markdown**:
+    - GET `/api/advisory/{advisory_id}/markdown`
+    - GET `/api/advisory/{advisory_id}/markdown/minimized`
+    - GET `/api/content_block/{content_block_id}/markdown`
+2. Add search field `description` in **Datalake Url** list
+3. Indicate **deprecation of** `datalake_url` **search field** in `/api/content_block` and `/api/content_block/complete`
+4. **Add** `datalake_urls` **search field** in `/api/advisory`, `/api/content_block` and `/api/content_block/complete` that can take comma-separated values and will lookup in title, url, and description
+5. Automatic extraction of **Threat Entities** for each **Datalake Url**:
+    - **Threat Entities** information will be added to the `description` field of the **Datalake Url** as **HTML**
+    - Content will be automatically rendered when using the `*/html/*` and `*/markdown/*` endpoints
+        ```html
+        <div style="font-family:Segoe UI,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,Arial,sans-serif; font-size:13px; line-height:1.4">
+            <h5 style="margin-left:0; margin-right:0">BlackByte</h5>
+
+            <div style="font-size:13px; margin-bottom:6px; margin-left:0; margin-right:0; margin-top:0">[SOURCE - MISP Project Galaxies - malpedia] Ransomware. Uses dropper written in JavaScript to deploy a .NET payload.</div>
+            </div>
+        ```
+
+### Production - v1.9.1
+> 09-11-2025
 
 #### Features:
 1. Add search field `description` in **Sources** list

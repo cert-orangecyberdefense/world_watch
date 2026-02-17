@@ -472,7 +472,7 @@ Endpoint used to get list of advisories.
 
 The `categories` field in the response corresponds to a **concatenation** of all the `categories` of this advisory's content blocks.
 
-List can be filtered by  `id`, `title`, `tdc_id`, `content`, `severity`, `tags`, `categories`, `created_before`, `created_after`, `updated_before`, `updated_after`. You can pass multiple values separated by commas to `tags` and `categories`. Searching by `tags` will return all **Advisories** that have these `tags` and all **Advisories** who have an associated **Content Block** that has these `tags`. Searching by `categories` will return all **Advisories** that have at least one **Content Block** that has these `categories`. Filters can be added to the request as query params. In addition, you can set the `sort_by` and `sort_order` query params to sort the results. By default, the results are sorted by `updated_at` in descending order. 
+List can be filtered by  `id`, `title`, `tdc_id`, `content`, `severity`, `tags`, `categories`, `sources`, `datalake_urls`, `created_before`, `created_after`, `updated_before`, `updated_after`. You can pass multiple values separated by commas to `tags` and `categories`. Searching by `tags` will return all **Advisories** that have these `tags` and all **Advisories** who have an associated **Content Block** that has these `tags`. Searching by `categories` will return all **Advisories** that have at least one **Content Block** that has these `categories`. Filters can be added to the request as query params. In addition, you can set the `sort_by` and `sort_order` query params to sort the results. By default, the results are sorted by `updated_at` in descending order. 
 
 #### Get One
 
@@ -524,6 +524,38 @@ Endpoint used to get an advisory as HTML. If there are more than 4 updates, the 
 
 If advisory is not found the error will be raised: `Advisory with id: {advisory_id} not found`. with status code `404`.
 
+#### Get Markdown
+
+**URL:** `/api/advisory/{advisory_id}/markdown` (`GET`)
+
+**Permissions:** `MANAGER`, `ADMIN`, `ANALYST`, `USER`
+
+**Authorization:** `APIKeyAuthentication`
+
+**Throttling:** `USER_REQUESTS_PER_MIN`
+
+**Description:**
+
+Endpoint used to get an advisory as Markdown.
+
+If `advisory` is not found the error will be raised: `Advisory with id: {advisory_id} not found.` with status code `404`.
+
+#### Get Markdown Minimized
+
+**URL:** `/api/advisory/{advisory_id}/markdown/minimized` (`GET`)
+
+**Permissions:** `MANAGER`, `ADMIN`, `ANALYST`, `USER`
+
+**Authorization:** `APIKeyAuthentication`
+
+**Throttling:** `USER_REQUESTS_PER_MIN`
+
+**Description:**
+
+Endpoint used to get an advisory as Markdown. If there are more than 4 updates, the Markdown will display the latest 3 updates and the initial advisory. 
+
+If advisory is not found the error will be raised: `Advisory with id: {advisory_id} not found`. with status code `404`.
+
 
 ### Content Block
 
@@ -543,7 +575,7 @@ Endpoint used to get list of content blocks.
 
 The `advisory_tags` field in the response corresponds to the **tags of the parent advisory**.
 
-List can be filtered by `id`, `title`, `advisory_id`, `categories`, `severity`, `content`, `created_before`, `created_after`, `updated_before`, `updated_after`,`tags`, `sources`, `detection_rules`, `datalake_url`. You can pass multiple values separated by commas to `tags` and `categories`. Filters can be added to the request as query params. In addition, you can set the `sort_by` and `sort_order` query params to sort the results. By default, the results are sorted by `updated_at` in descending order.
+List can be filtered by `id`, `title`, `advisory_id`, `categories`, `severity`, `content`, `created_before`, `created_after`, `updated_before`, `updated_after`,`tags`, `sources`, `detection_rules`, `datalake_urls`. You can pass multiple values separated by commas to `tags` and `categories`. Filters can be added to the request as query params. In addition, you can set the `sort_by` and `sort_order` query params to sort the results. By default, the results are sorted by `updated_at` in descending order.
 
 
 #### List All Complete
@@ -560,7 +592,7 @@ List can be filtered by `id`, `title`, `advisory_id`, `categories`, `severity`, 
 
 Endpoint used to get list of content blocks. The endpoint returns additional data `executive_summary`, `what_you_will_hear`, `what_it_means`, `what_you_should_do`.
 
-List can be filtered by `id`, `title`, `advisory_id`, `categories`, `severity`, `content`, `created_before`, `created_after`, `updated_before`, `updated_after`,`tags`, `sources`, `detection_rules`, `datalake_url`. You can pass multiple values separated by commas to `tags` and `categories`. Filters can be added to the request as query params. In addition, you can set the `sort_by` and `sort_order` query params to sort the results. By default, the results are sorted by `updated_at` in descending order.
+List can be filtered by `id`, `title`, `advisory_id`, `categories`, `severity`, `content`, `created_before`, `created_after`, `updated_before`, `updated_after`,`tags`, `sources`, `detection_rules`, `datalake_urls`. You can pass multiple values separated by commas to `tags` and `categories`. Filters can be added to the request as query params. In addition, you can set the `sort_by` and `sort_order` query params to sort the results. By default, the results are sorted by `updated_at` in descending order.
 
 #### Get One Minimized
 
@@ -591,6 +623,22 @@ If the content block is not found returns error `Content block with id: {content
 **Description:**
 
 Endpoint used to get a content block as HTML.
+
+If `content_block` is not found the error will be raised: `Content block with id: {content_block_id} not found.` with status code `404`.
+
+#### Get Markdown
+
+**URL:** `/api/content_block/{content_block_id}/markdown` (`GET`)
+
+**Permissions:** `MANAGER`, `ADMIN`, `ANALYST`, `USER`
+
+**Authorization:** `APIKeyAuthentication`
+
+**Throttling:** `USER_REQUESTS_PER_MIN`
+
+**Description:**
+
+Endpoint used to get a content block as Markdown.
 
 If `content_block` is not found the error will be raised: `Content block with id: {content_block_id} not found.` with status code `404`.
 
