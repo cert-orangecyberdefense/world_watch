@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file.
 
+## Production - v1.10
+> 08-06-2026
+
+### Features:
+
+1. New **Statistics** endpoints:
+    - `/api/stats/count`: Get count of advisories/updates over time.
+    - `/api/stats/severity`: Get count of advisories/updates per severity over time. 
+    - `/api/stats/top`: Get the top N most frequent items (based on selected grouping)
+
+### Other
+
+1.  **Deprecation of** `datalake_url` **search field** in `/api/content_block` and `/api/content_block/complete`
+
 ## Production - v1.9
 > 31-11-2025
 
