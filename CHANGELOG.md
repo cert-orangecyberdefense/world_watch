@@ -5,6 +5,18 @@ All notable changes to this project will be documented in this file.
 ## Production - v1.10
 > 08-06-2026
 
+### Production - v1.10.1
+> 31-07-2026
+
+#### Features:
+
+1. Add grouping by **continent** in GET `/api/stats/top`.
+
+#### Other
+
+1. Replace **Threat Defense Center** urls by **Fusion Central** urls.
+
+
 ### Features:
 
 1. New **Statistics** endpoints:
