@@ -145,7 +145,7 @@ If not met, returns error `You do not have permissions to perform this action.` 
 
 ### Pagination
 
-`Limit` and `Offset` can be set as query params for listing `users`, `content_block`, `advisories`, `categories`, `sources`, `detection_rules`, `tags`, and `datalake_url`. Default limit is set in ENV `PAGINATION_PER_PAGE`.
+`Limit` and `Offset` can be set as query params for listing `users`, `content_block`, `advisories`, `categories`, `sources`, `detection_rules`, `tags`, `datalake_url`, and `documents`. Default limit is set in ENV `PAGINATION_PER_PAGE`.
 
 ## Endpoints
 
@@ -453,6 +453,60 @@ Endpoint used to revoke key for given id.
 If token is not found returns error `Not Found` with status code `404`.
 
 If the token owner is not descendant of requesting user returns `You do not have permission to access user: {user_id}.` with status code `403`.
+
+### Statistics
+
+#### Get Count
+
+**URL:** `/api/stats/count` (`GET`)
+
+**Permissions:** `Not set`
+
+**Authorization:** `Not set`
+
+**Throttling:** `ANON_REQUESTS_PER_MIN`
+
+**Description:**
+
+Endpoint used to get aggregated counts of new content blocks and updates over time.
+
+The `group_by` query param accepts `year`, `month`, `week`, or `day` and defaults to `month`. The `type` query param accepts `new_content`, `updates`, or `both` and defaults to `both`.
+
+Results can be filtered by comma-separated `categories` and `tags`, as well as a `from` and `to` date range.
+
+#### Get Severity
+
+**URL:** `/api/stats/severity` (`GET`)
+
+**Permissions:** `Not set`
+
+**Authorization:** `Not set`
+
+**Throttling:** `ANON_REQUESTS_PER_MIN`
+
+**Description:**
+
+Endpoint used to get aggregated counts of content blocks by severity over time. Missing severity counts are returned as zero to ensure continuity in the time series.
+
+The `group_by`, `type`, `categories`, `tags`, `from`, and `to` query params work as described for the [Get Count](#get-count) endpoint.
+
+#### Get Top
+
+**URL:** `/api/stats/top` (`GET`)
+
+**Permissions:** `Not set`
+
+**Authorization:** `Not set`
+
+**Throttling:** `ANON_REQUESTS_PER_MIN`
+
+**Description:**
+
+Endpoint used to get the most frequent items based on the selected grouping.
+
+The `group_by` query param accepts `category`, `tag`, `country`, `sector`, or `continent` and defaults to `category`. The `limit` query param defaults to `10` and accepts values from `1` to `20`.
+
+Results can be filtered by comma-separated `categories`, `tags`, `sectors`, `countries`, and `continents`, as well as a `from` and `to` date range. The filter that corresponds to the selected `group_by` value is ignored.
 
 ### Advisory
 
@@ -889,6 +943,38 @@ If given `content_block` is not found the error will be raised: `Content block w
 Endpoint used to delete a datalake url for given id. Returns `204` status code if no errors occurs.
 
 If `datalake_url` is not found the error will be raised: `DatalakeUrl with id: {datalake_url_id} not found.` with status code `404`.
+
+### Documents
+
+#### List All
+
+**URL:** `/api/documents` (`GET`)
+
+**Permissions:** `MANAGER`, `ADMIN`, `ANALYST`, `USER`
+
+**Authorization:** `APIKeyAuthentication`
+
+**Throttling:** `USER_REQUESTS_PER_MIN`
+
+**Description:**
+
+Endpoint used to get the list of documents shared with the requesting user.
+
+List can be filtered by `name`, `date_gt`, and `date_lt`. The `date_gt` and `date_lt` filters apply to the document's effective date.
+
+#### Download One
+
+**URL:** `/api/documents/{document_id}` (`GET`)
+
+**Permissions:** `MANAGER`, `ADMIN`, `ANALYST`, `USER`
+
+**Authorization:** `APIKeyAuthentication`
+
+**Throttling:** `USER_REQUESTS_PER_MIN`
+
+**Description:**
+
+Endpoint used to download a document shared with the requesting user.
 
 ### Tags
 

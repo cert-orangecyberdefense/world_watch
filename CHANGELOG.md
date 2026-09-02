@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file.
 
+## Production - v1.11
+> 27-08-2026
+
+### Features:
+
+1. New **Documents** endpoints:
+    - `/api/documents`: Get list of the documents shared with the authenticated user.
+    - `/api/documents/{document_id}`: Download the referenced document.
+
+
 ## Production - v1.10
 > 08-06-2026
 
