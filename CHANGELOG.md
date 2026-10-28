@@ -5,6 +5,15 @@ All notable changes to this project will be documented in this file.
 ## Production - v1.11
 > 27-08-2026
 
+### Production - v1.11.1
+> 28-10-2026
+
+### Changes:
+
+- `/stats` endpoints require authentication (previously un-authenticated)
+- Number of time periods for `/stats` endpoints is capped at 400. You cannot requests stats divided into timeframes that exceed 400 timeframes (400 days, 400 months...)
+- `/reset_password` usable with only an **EmailKey** (previously **EmailKey** or **LoginToken**)
+
 ### Features:
 
 1. New **Documents** endpoints:
